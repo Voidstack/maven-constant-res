@@ -1,4 +1,4 @@
-# 🚀 Maven Constant Resources Plugin
+# 🚀 R for Maven
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.enosi/maven-constant-res.svg)](https://central.sonatype.com/artifact/com.enosi/maven-constant-res)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
