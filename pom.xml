@@ -94,7 +94,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/r</generatedSourcesDirectory>
                     <source>17</source> <!-- ou ta version Java -->
                     <target>17</target>
                     <encoding>UTF-8</encoding>

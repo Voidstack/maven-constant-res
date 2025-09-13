@@ -31,7 +31,7 @@ Add the plugin to your `pom.xml`:
             <executions>
                 <execution>
                     <goals>
-                        <goal>generate-r</goal>
+                        <goal>generate</goal>
                     </goals>
                 </execution>
             </executions>
