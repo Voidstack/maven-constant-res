@@ -8,10 +8,12 @@
     <version>1.0.0</version>
     <packaging>maven-plugin</packaging>
 
+    <!-- Metadata for project -->
     <name>r-for-maven</name>
-    <description>Génération automatique de la classe R (ressources) pour les projets Java</description>
+    <description>Generate compile-time constants for all your resource files automatically, just like Android's R.java class.</description>
     <url>https://github.com/Voidstack/r-for-maven</url>
 
+    <!-- License for project -->
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -19,6 +21,7 @@
         </license>
     </licenses>
 
+    <!-- Developer for project -->
     <developers>
         <developer>
             <id>voidstack</id>
@@ -27,12 +30,14 @@
         </developer>
     </developers>
 
+    <!-- SCM for link repository -->
     <scm>
         <connection>scm:git:git://github.com/Voidstack/r-for-maven.git</connection>
         <developerConnection>scm:git:ssh://github.com:Voidstack/r-for-maven.git</developerConnection>
         <url>https://github.com/Voidstack/r-for-maven</url>
     </scm>
 
+    <!-- Properties for project -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -41,6 +46,7 @@
     </properties>
 
     <dependencies>
+        <!-- API Maven for develop plugin -->
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
@@ -48,6 +54,7 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Annotations for develop plugin -->
         <dependency>
             <groupId>org.apache.maven.plugin-tools</groupId>
             <artifactId>maven-plugin-annotations</artifactId>
@@ -58,7 +65,7 @@
 
     <build>
         <plugins>
-            <!-- Plugin Maven pour générer le descriptor du plugin -->
+            <!-- Plugin Maven for generate descriptor -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
@@ -77,7 +84,7 @@
                 </executions>
             </plugin>
 
-            <!-- Compiler Java -->
+            <!-- Compiler Java for set version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -89,7 +96,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Central Publishing -->
+            <!-- Central Publishing for deploy on Maven Central -->
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
@@ -100,7 +107,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Source -->
+            <!-- Source for attach sources -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -113,7 +120,7 @@
                 </executions>
             </plugin>
 
-            <!-- Javadoc -->
+            <!-- Javadoc for attach javadocs -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
