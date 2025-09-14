@@ -28,8 +28,17 @@ Add the plugin to your `pom.xml`:
             <groupId>com.enosistudio</groupId>
             <artifactId>r-for-maven</artifactId>
             <version>1.0.0</version>
+            <configuration>
+                <keepInProjectFiles>true</keepInProjectFiles> <!-- Optional: keep generated files in project -->
+                <resourcesDir>${project.basedir}/src/main/resources</resourcesDir> <!-- Optional: specify resources directory -->
+                <outputSrcDirectory>${project.basedir}/src/main/java</outputSrcDirectory> <!-- Optional: specify output source directory -->
+                <outputTargetDirectory>${project.build.directory}/generated-sources</outputTargetDirectory> <!-- Optional: specify output target directory -->
+                <packageName>com.enosistudio.generated</packageName> <!-- Optional: specify package name -->
+            </configuration>
             <executions>
                 <execution>
+                    <!-- Can help intellij to not bug when creating the source folder, when using <keepInProjectFiles>false</keepInProjectFiles> -->
+                    <phase>process-sources</phase>
                     <goals>
                         <goal>generate</goal>
                     </goals>
@@ -46,8 +55,6 @@ Add the plugin to your `pom.xml`:
 ```java
 // Hardcoded strings everywhere!
 InputStream logo = getClass().getResourceAsStream("/images/logo.png");
-InputStream config = getClass().getResourceAsStream("/config.json"); 
-InputStream template = getClass().getResourceAsStream("/templates/email.html");
 
 // Typos cause runtime errors 💥
 InputStream oops = getClass().getResourceAsStream("/iamges/logo.png"); // Whoops!
@@ -58,12 +65,10 @@ InputStream oops = getClass().getResourceAsStream("/iamges/logo.png"); // Whoops
 import com.enosistudio.generated.R;
 
 // Generated constants - no typos possible!
-InputStream logo = getClass().getResourceAsStream("/" + R.logo_png);
-InputStream config = getClass().getResourceAsStream("/" + R.config_json);
-InputStream template = getClass().getResourceAsStream("/" + R.email_html);
+InputStream logo = R.LOGO_PNG.openStream();
 
 // Compile-time safety 🛡️
-InputStream safe = getClass().getResourceAsStream("/" + R.non_existent); // Won't compile!
+InputStream safe = R.LOOG_PNG.openStream(); // Won't compile!
 ```
 
 ## 📂 Generated Code
@@ -73,17 +78,17 @@ InputStream safe = getClass().getResourceAsStream("/" + R.non_existent); // Won'
 src/main/resources/
 ├── logo.png
 ├── config.json
-└── style.css
 ```
 
 **Generated R.java:**
 ```java
 package com.enosistudio.generated;
 
-public class R {
-    public static final String logo_png = "logo.png";
-    public static final String config_json = "config.json";
-    public static final String style_css = "style.css";
+public enum R {
+    LOGO_PNG("logo.png"),
+    CONFIG_JSON("config.json");
+
+    // ...
 }
 ```
 
@@ -94,4 +99,4 @@ public class R {
 
 ---
 
-⭐ **Give a star if this helped you!**
+⭐ **Give a star!**
