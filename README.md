@@ -1,6 +1,6 @@
 # 🚀 R for Maven
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.enosistudio/maven-constant-res.svg)](https://central.sonatype.com/artifact/com.enosistudio/maven-constant-res)
+[![Maven Central](https://img.shields.io/maven-central/v/com.enosistudio/r-for-maven.svg)](https://central.sonatype.com/artifact/com.enosistudio/r-for-maven)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java](https://img.shields.io/badge/Java-11%2B-brightgreen.svg)](https://openjdk.java.net/)
 
