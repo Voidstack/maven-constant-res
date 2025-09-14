@@ -17,7 +17,7 @@ import java.util.List;
  * The generated class will be named R and will contain a constant for each file
  */
 @SuppressWarnings("unused")
-@Mojo(name = "generate-r", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
+@Mojo(name = "generate", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
 public class GenerateRMojo extends AbstractMojo {
     private static final String PATH_SEPARATOR = "/";
 
