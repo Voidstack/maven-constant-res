@@ -1,6 +1,6 @@
 # 🚀 R for Maven
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.enosi/maven-constant-res.svg)](https://central.sonatype.com/artifact/com.enosi/maven-constant-res)
+[![Maven Central](https://img.shields.io/maven-central/v/com.enosistudio/maven-constant-res.svg)](https://central.sonatype.com/artifact/com.enosistudio/maven-constant-res)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java](https://img.shields.io/badge/Java-11%2B-brightgreen.svg)](https://openjdk.java.net/)
 
@@ -25,7 +25,7 @@ Add the plugin to your `pom.xml`:
 <build>
     <plugins>
         <plugin>
-            <groupId>com.enosi</groupId>
+            <groupId>com.enosistudio</groupId>
             <artifactId>r-for-maven</artifactId>
             <version>1.0.0</version>
             <executions>
@@ -55,7 +55,7 @@ InputStream oops = getClass().getResourceAsStream("/iamges/logo.png"); // Whoops
 
 ### After (✅ Type-safe)
 ```java
-import com.enosi.generated.R;
+import com.enosistudio.generated.R;
 
 // Generated constants - no typos possible!
 InputStream logo = getClass().getResourceAsStream("/" + R.logo_png);
@@ -78,7 +78,7 @@ src/main/resources/
 
 **Generated R.java:**
 ```java
-package com.enosi.generated;
+package com.enosistudio.generated;
 
 public class R {
     public static final String logo_png = "logo.png";

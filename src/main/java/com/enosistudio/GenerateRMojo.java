@@ -1,4 +1,4 @@
-package com.enosi;
+package com.enosistudio;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -36,7 +36,7 @@ public class GenerateRMojo extends AbstractMojo {
     /**
      * Java package name for the generated R class.
      */
-    @Parameter(defaultValue = "com.enosi.generated")
+    @Parameter(defaultValue = "com.enosistudio.generated")
     private String packageName;
 
     /**
@@ -50,9 +50,6 @@ public class GenerateRMojo extends AbstractMojo {
      */
     @Parameter(defaultValue = "${project.basedir}/src/main/java")
     private File outputSrcDirectory;
-
-    @Parameter(defaultValue = "${project}", readonly = true, required = true)
-    private org.apache.maven.project.MavenProject project;
 
     public void execute() throws MojoExecutionException {
         // Choisir le dossier de base
@@ -77,13 +74,14 @@ public class GenerateRMojo extends AbstractMojo {
 
     /**
      * Generates the R enum source code and writes it to the provided FileWriter.
+     *
      * @param writer the FileWriter to write the generated code to
      * @throws IOException if an I/O error occurs
      */
     private void generateREnum(FileWriter writer) throws IOException {
         // Write package and imports
         writer.write("""
-                package com.enosi.generated;
+                package com.enosistudio.generated;
                 
                 import java.io.File;
                 import java.io.IOException;
@@ -243,6 +241,7 @@ public class GenerateRMojo extends AbstractMojo {
 
     /**
      * Scans the resources directory recursively and collects all resource files.
+     *
      * @return list of ResourceInfo objects representing each resource file
      */
     private List<ResourceInfo> scanAllResources() {
@@ -253,9 +252,10 @@ public class GenerateRMojo extends AbstractMojo {
 
     /**
      * Recursively scans a directory for resource files.
-     * @param dir the directory to scan
+     *
+     * @param dir         the directory to scan
      * @param currentPath the current relative path within the resources directory
-     * @param resources the list to collect found resources
+     * @param resources   the list to collect found resources
      */
     private void scanResourcesRecursive(File dir, String currentPath, List<ResourceInfo> resources) {
         if (!dir.exists() || !dir.isDirectory()) {
