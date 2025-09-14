@@ -26,7 +26,7 @@ Add the plugin to your `pom.xml`:
     <plugins>
         <plugin>
             <groupId>com.enosi</groupId>
-            <artifactId>maven-constant-res</artifactId>
+            <artifactId>r-for-maven</artifactId>
             <version>1.0.0</version>
             <executions>
                 <execution>
