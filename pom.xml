@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.enosistudio</groupId>
     <artifactId>r-for-maven</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>maven-plugin</packaging>
 
     <!-- Metadata for project -->
@@ -61,6 +61,14 @@
             <version>3.9.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Jetbrains Annotations for develop plugin -->
+        <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>26.0.2-1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -73,6 +81,13 @@
                 <configuration>
                     <goalPrefix>generate</goalPrefix>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains</groupId>
+                        <artifactId>annotations</artifactId>
+                        <version>26.0.2-1</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>default-descriptor</id>
