@@ -1,45 +1,52 @@
-Voici le README mis à jour pour refléter votre nouvelle implémentation hiérarchique :
-
-```markdown
 # 🚀 R for Maven
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.enosistudio/r-for-maven.svg)](https://central.sonatype.com/artifact/com.enosistudio/r-for-maven)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java](https://img.shields.io/badge/Java-11%2B-brightgreen.svg)](https://openjdk.java.net/)
 
-> **Hierarchical resource constants for Java Maven projects - Android R.java style for the JVM!**
+> **Type-safe hierarchical resource access for Java Maven projects - inspired by Android's R.java!**
 
 Generate a type-safe, hierarchical R.java class that mirrors your resource directory structure. Access files and folders with intuitive syntax like `R.config.database.readContent()` while enjoying full IDE autocompletion and compile-time validation.
 
 ## ✨ Features
 
-- 🎯 **Zero Configuration** - Works out of the box
-- 📁 **Hierarchical Structure** - Mirrors your `src/main/resources/` directory tree
+- 📁 **Hierarchical Structure** - Mirrors your resources directory tree
 - 🏗️ **Build Integration** - Generates during Maven compilation  
 - 🔤 **Smart Naming** - Converts file/folder names to camelCase Java identifiers
 - 📖 **Rich File API** - Built-in methods for reading, streaming, and path manipulation
-- 📂 **Folder Methods** - Access folder metadata with `getName()`, `getPath()`
+- 📂 **Folder Methods** - Access folder metadata with `myFolder._self` `.getName()`, `getPath()`
 - ⚡ **Fast Generation** - Lightweight and efficient
-- 🔧 **IDE Friendly** - Perfect autocompletion and navigation
 
 ## 📦 Installation
 
 Add the plugin to your `pom.xml`:
 
 ```xml
+<dependencies>
+    <!-- Required: the R class use various dependancy such as org.jetbrains.annotations -->
+    <dependency>
+        <groupId>com.enosistudio</groupId>
+        <artifactId>r-for-maven</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+</dependencies>
+
 <build>
     <plugins>
         <plugin>
             <groupId>com.enosistudio</groupId>
             <artifactId>r-for-maven</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <configuration>
-                <keepInProjectFiles>true</keepInProjectFiles>
-                <packageName>com.enosistudio.generated</packageName>
+                <keepInProjectFiles>true</keepInProjectFiles> <!-- Optional: keep generated files in project -->
+                <resourcesDir>${project.basedir}/src/main/resources</resourcesDir> <!-- Optional: specify resources directory -->
+                <outputSrcDirectory>${project.basedir}/src/main/java</outputSrcDirectory> <!-- Optional: specify output source directory -->
+                <outputTargetDirectory>${project.build.directory}/generated-sources</outputTargetDirectory> <!-- Optional: specify output target directory -->
+                <packageName>com.enosistudio.generated</packageName> <!-- Optional: specify package name -->
             </configuration>
             <executions>
                 <execution>
-                    <phase>generate-sources</phase>
+                    <phase>generate-sources</phase> <!-- Optional: Can help intellij to not bug when creating the source folder, when using <keepInProjectFiles>false</keepInProjectFiles> -->
                     <goals>
                         <goal>generate</goal>
                     </goals>
@@ -72,8 +79,8 @@ InputStream logo = R.images.icons.logoPng.openStream();
 URL resource = R.templates.emailHtml.getURL();
 
 // Folder information
-String folderName = R.config.getName();     // "config"
-String folderPath = R.config.getPath();     // "config"
+String folderName = R.config._self.getName();     // "config"
+String folderPath = R.config._self.getPath();     // "config"
 
 // Compile-time safety 🛡️
 R.config.databseProperties.readContent(); // Won't compile - no typos possible!
@@ -129,41 +136,6 @@ public final class R {
 }
 ```
 
-## 🔧 File Methods
-
-Each `RFile` provides rich functionality:
-
-```java
-RFile file = R.config.databaseProperties;
-
-// Content reading
-String content = file.readContent();           // Read as UTF-8 string
-InputStream stream = file.openStream();         // Get InputStream
-URL url = file.getURL();                        // Get URL
-
-// Path operations  
-String fileName = file.getFileName();           // "database.properties"
-String extension = file.getExtension();         // "properties" 
-String path = file.getPath();                   // "config/database.properties"
-Path javaPath = file.toPath();                  // Java NIO Path
-File javaFile = file.toFile(baseDir);           // Java File
-
-// Utilities
-boolean exists = file.exists();                 // Check existence
-String resourcePath = file.toResourcePath();    // "/config/database.properties"
-```
-
-## 📁 Folder Methods
-
-Each folder class extends `RFolder`:
-
-```java
-// Access folder information
-String name = R.config.getName();               // "config"
-String path = R.config.getPath();               // "config" 
-String fullPath = R.templates.reports.getPath(); // "templates/reports"
-```
-
 ## ⚙️ Configuration
 
 | Parameter | Default | Description |
@@ -181,5 +153,4 @@ String fullPath = R.templates.reports.getPath(); // "templates/reports"
 
 ---
 
-⭐ **Star this repo if it helps your project!**
-```
+⭐ **Star this repo if it helps!**
