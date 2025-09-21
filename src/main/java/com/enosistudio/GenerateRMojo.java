@@ -107,6 +107,9 @@ public class GenerateRMojo extends AbstractMojo {
                     import java.nio.file.Path;
                     import java.nio.file.Paths;
                     import java.net.URL;
+                    
+                    import com.enosistudio.RFile;
+                    import com.enosistudio.RFolder;
                     import org.jetbrains.annotations.Contract;
                     
                     /**
@@ -121,9 +124,6 @@ public class GenerateRMojo extends AbstractMojo {
 
             // Generate static fields for root level items
             generateNodeFields(writer, rootNode, "    ");
-
-            // Generate utility classes at the end
-            generateUtilityClasses(writer);
 
             writer.write("}\n");
         }
@@ -161,27 +161,6 @@ public class GenerateRMojo extends AbstractMojo {
 
             // Close class
             writer.write(String.format("%s}%n", indent));
-        }
-    }
-
-    /**
-     * Generates the utility classes RFolder and RFile by reading their content from plugin resources.
-     * @param writer the FileWriter to write the classes to
-     * @throws IOException if an I/O error occurs
-     */
-    private void generateUtilityClasses(FileWriter writer) throws IOException {
-        // Read and integrate RFolder class from plugin resources
-        String rFolderContent = readClassContent("RFolder.java");
-        if (rFolderContent != null) {
-            writer.write("\n");
-            writer.write(convertToInnerClass(rFolderContent, "RFolder", false));
-        }
-
-        // Read and integrate RFile class from plugin resources
-        String rFileContent = readClassContent("RFile.java");
-        if (rFileContent != null) {
-            writer.write("\n");
-            writer.write(convertToInnerClass(rFileContent, "RFile", true));
         }
     }
 

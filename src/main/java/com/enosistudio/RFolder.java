@@ -1,5 +1,7 @@
 package com.enosistudio;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * Base class for resource folders with utility methods.
  */
@@ -15,6 +17,7 @@ public class RFolder {
     /**
      * Gets the folder name.
      */
+    @Contract(pure = true)
     public String getName() {
         return folderName;
     }
@@ -22,6 +25,7 @@ public class RFolder {
     /**
      * Gets the full folder path.
      */
+    @Contract(pure = true)
     public String getPath() {
         return folderPath;
     }
