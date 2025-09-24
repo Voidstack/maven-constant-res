@@ -22,7 +22,7 @@ import java.nio.file.StandardCopyOption;
  * <ul>
  *   <li><b>Always work</b> (JAR + filesystem): {@link #openStream()}, {@link #readContent()},
  *       {@link #openBufferedReader()}, {@link #exists()}, {@link #size()}</li>
- *   <li><b>Create temp files for JAR</b>: {@link #toFile()}, {@link #toPath()}</li>
+ *   <li><b>Create temp files for JAR</b>: {@link #toFile()}, {@link #toAbsolutePath()}</li>
  *   <li><b>Metadata only</b>: {@link #getFileName()}, {@link #getExtension()},
  *       {@link #getBaseName()}, etc.</li>
  * </ul>
@@ -149,13 +149,13 @@ public final class RFile {
     }
 
     /**
-     * Converts the resource to a File object.
+     * Converts the resource to a File object from his absolute path.
      * If the resource is inside a JAR, it will be copied to a temporary file.
      *
      * @return a File object representing this resource
      * @throws IOException if the resource cannot be accessed or copied
      * <p><b>Note:</b> JAR resources are extracted to temporary files that are deleted on JVM exit.</p>
-     * @see #toPath()
+     * @see #toAbsolutePath()
      */
     @Contract(pure = true)
     public File toFile() throws IOException {
@@ -172,7 +172,7 @@ public final class RFile {
      * @see #toFile()
      */
     @Contract(pure = true)
-    public Path toPath() throws IOException {
+    public Path toAbsolutePath() throws IOException {
         return createTemporaryFileIfNeeded();
     }
 

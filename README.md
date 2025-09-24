@@ -27,7 +27,7 @@ Add the plugin to your `pom.xml`:
     <dependency>
         <groupId>com.enosistudio</groupId>
         <artifactId>r-for-maven</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </dependency>
 </dependencies>
 
@@ -36,7 +36,7 @@ Add the plugin to your `pom.xml`:
         <plugin>
             <groupId>com.enosistudio</groupId>
             <artifactId>r-for-maven</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
             <configuration>
                 <keepInProjectFiles>true</keepInProjectFiles> <!-- Optional: keep generated files in project -->
                 <resourcesDir>${project.basedir}/src/main/resources</resourcesDir> <!-- Optional: specify resources directory -->
